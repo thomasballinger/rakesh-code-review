@@ -13,7 +13,12 @@ def web_server():
             sockt, address = mysocket.accept()
             try:
                 sockt.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-                got_msg = sockt.recv(1000)
+                got_msg = ''
+                while True:
+                    got_msg += sockt.recv(1)
+                    if got_msg.endswith('\r\n\r\n') or got_msg.endswith('\n\n'):
+                        print 'finished reading request'
+                        break
                 if got_msg.find('GET /favicon.ico') != -1:
                     continue
                 print address, got_msg
