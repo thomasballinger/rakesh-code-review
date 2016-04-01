@@ -1,3 +1,5 @@
+import socket
+
 def web_server():
   import time, numpy as np
   mysocket = socket.socket()
@@ -23,3 +25,4 @@ def web_server():
   finally:
     mysocket.close()
 
+web_server()
