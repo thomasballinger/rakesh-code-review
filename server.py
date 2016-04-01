@@ -17,12 +17,11 @@ def web_server():
                 if got_msg.find('GET /favicon.ico') != -1:
                     continue
                 print address, got_msg
-                num = np.random.rand()
-                msg_send = "My random number: {0}\r\n".format(num)
-                print 'Sending {0}'.format(msg_send)
-                print sockt.sendall(msg_send)
-                print sockt.sendall(msg_send)
-                print sockt.sendall(msg_send)
+                for _ in range(3):
+                    num = np.random.rand()
+                    msg_send = "My random number: {0}\r\n".format(num)
+                    print 'Sending {0}'.format(msg_send)
+                    sockt.sendall(msg_send)
             finally:
                 sockt.close()
     finally:
