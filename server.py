@@ -10,8 +10,8 @@ def web_server():
         mysocket.listen(5)
 
         while True:
+            sockt, stuff = mysocket.accept()
             try:
-                sockt, stuff = mysocket.accept()
                 sockt.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
                 got_msg = sockt.recv(1000)
                 if got_msg.find('GET /favicon.ico') != -1:
