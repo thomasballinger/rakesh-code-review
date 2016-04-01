@@ -21,6 +21,8 @@ def web_server():
                 msg_send = "My random number: {0}\r\n".format(num)
                 print 'Sending {0}'.format(msg_send)
                 print sockt.sendall(msg_send)
+                print sockt.sendall(msg_send)
+                print sockt.sendall(msg_send)
             finally:
                 sockt.close()
     finally:
